@@ -12,11 +12,12 @@ btn.addEventListener('click', () => {
     xhr.onload = () => {
         //if the response is successful
         if(xhr.status===200){
-            let data = JSON.parse(xhr.responseText)
+            let data = JSON.parse(xhr.responseText);
+            console.log(data);
         }  
 
         else{
-            alert('Something 
+            alert('Something occured');
         }
 
     }
