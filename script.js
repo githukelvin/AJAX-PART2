@@ -13,7 +13,53 @@ btn.addEventListener('click', () => {
         //if the response is successful
         if(xhr.status===200){
             let data = JSON.parse(xhr.responseText);
-            console.log(data);
+            data.forEach(index => {
+            let divcountry = document.querySelector(".container");
+
+            const {
+                  capital,
+                  flags: { png, svg },
+                  timezones,
+                  name: { official,common },
+                } = index;
+                // console.log(timezones[1] == undefined);
+         if(timezones[1] == undefined){
+
+                   let div = `
+              <div class="country">
+            <div class="img">
+                <img src="${png}" alt="pl image">
+        
+            </div>
+            <div class="info">
+                <p>Name: <span class="name">${common}</span></p>
+                <p>Capital: <span class="capital">${capital}</span></p>
+        
+            </div>
+        </div>
+            `;
+                   divcountry.innerHTML += div;
+         }
+         else{
+                   let div = `
+              <div class="country">
+            <div class="img">
+                <img src="${png}" alt="pl image">
+        
+            </div>
+            <div class="info">
+                <p>Name: <span class="name">${official}</span></p>
+                <p>Capital: <span class="capital">${capital}</span></p>
+                <p>Timezone: <span class="timezone">${timezones[1]}</span></p>
+        
+            </div>
+        </div>
+            `;
+                   divcountry.innerHTML += div;
+         }
+                
+            });
+
         }  
 
         else{
